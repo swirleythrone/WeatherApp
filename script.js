@@ -45,7 +45,7 @@ function getDayName(number){
         case 2:
             return "Tuesday"
         case 3:
-            return "Wedday"
+            return "Wednesday"
         case 4:
             return "Thursday"
         case 5:
