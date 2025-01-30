@@ -16,7 +16,6 @@ const fetchResults=async(targetLocation)=>{
     const data=await res.json()
     console.log(data);
     let locationName=data.location.name
-    let time=data.location.localtime
     let temp=data.current.temp_c
     let condition = data.current.condition.text
     updateDetails(temp,locationName,condition);
