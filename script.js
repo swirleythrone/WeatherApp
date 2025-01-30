@@ -1,7 +1,6 @@
 //http://api.weatherapi.com/v1/current.json?key=0949e23381ba45ee96b175341252101&q=Allahabad&aqi=no
 const temperaturefield=document.querySelector(".temp");
 const locationfield=document.querySelector(".time_location p");
-const dateandTimefield=document.querySelector(".time_location span");
 const conditionfield=document.querySelector(".condition p");
 const searchfield=document.querySelector(".search_area");
 const form=document.querySelector('form');
@@ -20,41 +19,19 @@ const fetchResults=async(targetLocation)=>{
     let time=data.location.localtime
     let temp=data.current.temp_c
     let condition = data.current.condition.text
-    updateDetails(temp,locationName,time,condition);
+    updateDetails(temp,locationName,condition);
 }
 
-function updateDetails(temp,locationName,time,condition){
-    let splitDate=time.split(' ')[0]
-    let splitTime=time.split(' ')[1]
-    let currentDay=getDayName(new Date(splitDate).getDay())
+function updateDetails(temp,locationName,condition){
 
     temperaturefield.innerHTML=temp;
     locationfield.innerHTML=locationName;
-    dateandTimefield.innerHTML=`${splitDate} ${currentDay} ${splitTime}`
     conditionfield.innerHTML=condition;
 }
 
 fetchResults(targetLocation)
 
-function getDayName(number){
-    switch(number){
-        case 0:
-            return "Sunday"
-        case 1:
-            return "Monday"
-        case 2:
-            return "Tuesday"
-        case 3:
-            return "Wednesday"
-        case 4:
-            return "Thursday"
-        case 5:
-            return "Friday"
-        case 6:
-            return "Saturday"
 
-    }
-}
 
 function searchForLocation(e){
     e.preventDefault()
